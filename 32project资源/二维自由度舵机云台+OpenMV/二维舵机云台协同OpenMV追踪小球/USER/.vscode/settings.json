@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "led.h": "c",
+        "buzzer.h": "c",
+        "oled.h": "c",
+        "oled_font.h": "c",
+        "pwm.h": "c",
+        "motor.h": "c",
+        "stm32f10x.h": "c",
+        "inv_mpu.h": "c",
+        "mpuiic.h": "c",
+        "delay.h": "c",
+        "inv_mpu_dmp_motion_driver.h": "c",
+        "timer6.h": "c",
+        "sys.h": "c",
+        "control.h": "c",
+        "pid.h": "c",
+        "encoder.h": "c",
+        "rocker.h": "c",
+        "type_traits": "c",
+        "mpu6050.h": "c"
+    }
+}

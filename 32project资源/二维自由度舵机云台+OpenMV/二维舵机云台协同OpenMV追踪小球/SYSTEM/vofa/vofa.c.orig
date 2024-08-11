@@ -1,0 +1,98 @@
+#include "vofa.h"
+#include "usart.h"
+
+
+//RawData数据协议
+void RawData_Test(void)		//  直接当串口助手使用 测试是否可行
+{
+    u1_SendByte(0x40);
+    u1_SendByte(0x41);
+    u1_SendByte(0x42);
+    u1_SendByte(0x43);
+    u1_SendByte(0x0d);
+    u1_SendByte(0x0a);
+}
+
+//FireWater数据协议
+float a=5,b=10,c=20;
+void FireWater_Test(void)
+{
+    a+=100;
+    b+=50;
+    c+=10;
+    u1_printf("%.2f,%.2f,%.2f\n",a,b,c);
+}
+
+
+//使用justfloat 数据协议 所需
+
+/*
+要点提示:
+1. float和unsigned long具有相同的数据结构长度
+2. union据类型里的数据存放在相同的物理空间
+*/
+typedef union
+{
+    float fdata;
+    unsigned long ldata;
+} FloatLongType;
+
+
+/*
+将浮点数f转化为4个字节数据存放在byte[4]中
+*/
+void Float_to_Byte(float f,unsigned char byte[])
+{
+    FloatLongType fl;
+    fl.fdata=f;
+    byte[0]=(unsigned char)fl.ldata;
+    byte[1]=(unsigned char)(fl.ldata>>8);
+    byte[2]=(unsigned char)(fl.ldata>>16);
+    byte[3]=(unsigned char)(fl.ldata>>24);
+}
+
+/*
+将4个字节数据byte[4]转化为浮点数存放在*f中
+*/
+void Byte_to_Float(float *f,unsigned char byte[])
+{
+    FloatLongType fl;
+    fl.ldata=0;
+    fl.ldata=byte[3];
+    fl.ldata=(fl.ldata<<8)|byte[2];
+    fl.ldata=(fl.ldata<<8)|byte[1];
+    fl.ldata=(fl.ldata<<8)|byte[0];
+    *f=fl.fdata;
+}
+
+
+#define CH_COUNT 4
+typedef struct Frame
+{
+	float ch_data[CH_COUNT];
+    unsigned char tail[4]{0x00, 0x00, 0x80, 0x7f};
+};
+
+void JustFloat_Test(void)
+{
+    float a=10,b=20;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

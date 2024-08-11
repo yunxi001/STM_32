@@ -1,0 +1,7 @@
+Added Pin To Net: NetName=GND Pin=U?-3
+Added Pin To Net: NetName=RXD Pin=U1-30
+Added Pin To Net: NetName=RXD Pin=U?-7
+Added Net: Name=RXD
+Added Pin To Net: NetName=TXD Pin=U1-31
+Added Pin To Net: NetName=TXD Pin=U?-6
+Added Net: Name=TXD

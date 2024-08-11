@@ -1,0 +1,6 @@
+[submodule "32cubeMx_project"]
+	path = 32cubeMx_project
+	url = D:\\51and32\\STM 32\\32cubeMx_project
+[submodule "stm32project"]
+	path = stm32project
+	url = D:\\51and32\\STM 32\\stm32project
